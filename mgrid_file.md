@@ -23,6 +23,7 @@ The following scalar variables are usually available:
 * `zmax` maximum `Z` value of the grid at which the magnetic field is computed in m
 * `mgrid_mode` is `'R'` (raw; the outputs are for the coil currents given to `mgrid`)
                or `'S'` (scaled: the outputs are normalized to a unit current on 1A)
+* `raw_coil_cur` raw coil currents used in computation when `mgrid_mode` was `'R'` in A
 
 The cylindrical components of the magnetic field is contained in separate variables per coil group:
 * `br_001` contains the cylindrical `R` component of the magnetic field due to the first coil in T
