@@ -37,6 +37,7 @@ The grid points in `R` are located at `rad = rmin + (i - 1)*delr` for `i` in {1,
 The grid points in `Z` are located at `zee = zmin + (j - 1)*delz` for `j` in {1, ..., `jz`}.
 The grid points in `phi` are located at `phi = (k - 1)*delp` for `k` in {1, ..., `kp`} (no stellarator symmetry)
 or for `k` in {1, ..., kp/2+kp%2} in case of stellarator symmetry.
+For even deeper information, please refer to the [actual source code](https://github.com/ORNL-Fusion/MAKEGRID/blob/master/Sources/write_mgrid.f#L259).
 
 The following quantities are arrays of shape `[kp][jz][ir]`.
 
