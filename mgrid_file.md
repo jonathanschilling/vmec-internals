@@ -26,6 +26,8 @@ The following scalar variables are usually available:
                or `'S'` (scaled: the outputs are scaled to require the raw coil currents given to `mgrid`)
 * `raw_coil_cur` raw coil currents used in computation when `mgrid_mode` was `'S'` in A
 
+The following quantities are arrays of shape `[kp][jz][ir]`.
+
 The cylindrical components of the magnetic field is contained in separate variables per coil group:
 * `br_001` contains the cylindrical `R` component of the magnetic field due to the first coil in T
 * `bp_001` contains the cylindrical `phi` component of the magnetic field due to the first coil in T
