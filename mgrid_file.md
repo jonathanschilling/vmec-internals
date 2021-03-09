@@ -11,6 +11,9 @@ the magnetic field is computed once and stored in the `mgrid` file.
 Bilinear interpolation (not divergence-free!) is then used to interpolate the magnetic field
 to the positions on the LCFS.
 
+Among the inputs to `MAKEGRID` is the flag `lstell_sym`.
+It controls whether to make use of [Stellarator symmetry](https://doi.org/10.1016/S0167-2789(97)00216-9) or not to reduce the required number of toroidal grid points per field period.
+
 The `mgrid` file is stored in the NetCDF format.
 The following scalar variables are usually available:
 * `ir` number of grid points in `R` direction
@@ -25,6 +28,14 @@ The following scalar variables are usually available:
 * `mgrid_mode` is `'R'` (raw; the outputs are normalized to a unit current on 1A)
                or `'S'` (scaled: the outputs are scaled to require the raw coil currents given to `mgrid`)
 * `raw_coil_cur` raw coil currents used in computation when `mgrid_mode` was `'S'` in A
+
+The grid spacing in `R` is `delr = (rmax-rmin)/(ir-1)`.
+
+The grid spacing in `Z` is `delz = (zmax-zmin)/(jz-1)`.
+
+The grid spacing in `phi` is `delp = (2 pi)/nfp / kp`.
+
+
 
 The following quantities are arrays of shape `[kp][jz][ir]`.
 
