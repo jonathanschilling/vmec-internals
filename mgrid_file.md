@@ -30,12 +30,13 @@ The following scalar variables are usually available:
 * `raw_coil_cur` raw coil currents used in computation when `mgrid_mode` was `'S'` in A
 
 The grid spacing in `R` is `delr = (rmax-rmin)/(ir-1)`.
-
 The grid spacing in `Z` is `delz = (zmax-zmin)/(jz-1)`.
-
 The grid spacing in `phi` is `delp = (2 pi)/nfp / kp`.
 
-
+The grid points in `R` are located at `rad = rmin + (i - 1)*delr` for `i` in {1, ..., `ir`}.
+The grid points in `Z` are located at `zee = zmin + (j - 1)*delz` for `j` in {1, ..., `jz`}.
+The grid points in `phi` are located at `phi = (k - 1)*delp` for `k` in {1, ..., `kp`} (no stellarator symmetry)
+or for `k` in {1, ..., kp/2+kp%2} in case of stellarator symmetry.
 
 The following quantities are arrays of shape `[kp][jz][ir]`.
 
