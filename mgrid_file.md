@@ -29,7 +29,7 @@ The cylindrical components of the magnetic field is contained in separate variab
 * `br_002` contains the cylindrical `R` component of the magnetic field due to the second coil in T
 * etc.
 
-In more modern version of `mgrid` files, also the magnetic vector potential is stored in a similar structure:
+In more modern versions of the `mgrid` file, also the magnetic vector potential is stored in a similar structure:
 * `ar_001` contains the cylindrical `R` component of the magnetic vector potential due to the first coil
 * `ap_001` contains the cylindrical `phi` component of the magnetic vector potential due to the first coil
 * `az_001` contains the cylindrical `Z` component of the magnetic vector potential due to the first coil
