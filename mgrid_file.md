@@ -12,13 +12,13 @@ Bilinear interpolation (not divergence-free!) is then used to interpolate the ma
 to the positions on the LCFS.
 
 Among the inputs to `MAKEGRID` is the flag `lstell_sym`.
-It controls whether to make use of [Stellarator symmetry](https://doi.org/10.1016/S0167-2789(97)00216-9) or not to reduce the required number of toroidal grid points per field period.
+It controls whether to make use of [Stellarator symmetry](https://doi.org/10.1016/S0167-2789(97)00216-9) when evaluating the magnetic field and magnetic vector potential. Note that this does not change the number of toroidal grid points per field period (`kp`) in the output.
 
 The `mgrid` file is stored in the NetCDF format.
 The following scalar variables are usually available:
 * `ir` number of grid points in `R` direction
 * `jz` number of grid points in `Z` direction
-* `kp` number of grid points in (toroidal) `phi` direction
+* `kp` number of grid points in (toroidal) `phi` direction per field period
 * `nfp` number of field periods in the toroidal direction (HSX: 4, W7-X: 5, etc.)
 * `nextcur` number of coil groups (i.e. number of unique coil currents)
 * `rmin` minimum `R` value of the grid at which the magnetic field is computed in m
@@ -35,8 +35,9 @@ The grid spacing in `phi` is `delp = (2 pi)/nfp / kp`.
 
 The grid points in `R` are located at `rad = rmin + (i - 1)*delr` for `i` in {1, ..., `ir`}.
 The grid points in `Z` are located at `zee = zmin + (j - 1)*delz` for `j` in {1, ..., `jz`}.
-The grid points in `phi` are located at `phi = (k - 1)*delp` for `k` in {1, ..., `kp`} (no stellarator symmetry)
-or for `k` in {1, ..., kp/2+kp%2} in case of stellarator symmetry.
+The grid points in `phi` at which the fields are evaluated are located at `phi = (k - 1)*delp` for `k` in {1, ..., `kp`}.
+In case of stellarator symmetry, the field are only evaluated at points for `k` in {1, ..., `kp/2+kp%2`} and the remaining toroidal locations are filled
+based on the assumption of stellarator symmetry according to `(B_R, B_phi, B_z) (r,-phi,-z) = (-B_r, B_phi, B_z)(r,phi,z)`.
 For even deeper information, please refer to the [actual source code](https://github.com/ORNL-Fusion/MAKEGRID/blob/master/Sources/write_mgrid.f#L259).
 
 The following quantities are arrays of shape `[kp][jz][ir]`.
